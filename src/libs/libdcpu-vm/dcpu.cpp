@@ -7,9 +7,10 @@ namespace DCPU {
         Reset(true);
     }
 
-    void Core::Flash(std::vector<uint16_t> words)
+    void Core::Flash(uint16_t words[0x10000])
     {
-        memory = words;
+        for(int i = 0; i < 0x10000; i++)
+            memory[i] = words[i];
     }
 
     void Core::Reset(bool reset_memory) 
@@ -18,11 +19,14 @@ namespace DCPU {
         sp = 0;
         ex = 0;
         ia = 0;
-        
-        registers = std::vector<uint16_t>(8);
+       
+        for(int i = 0; i < 8; i++)
+            registers[i] = 0;
+             
         if(reset_memory)
         {
-            memory = std::vector<uint16_t>(0x10000);
+            for(int i = 0; i < 0x10000; i++)
+                memory[i] = 0;
         }
     }
 
@@ -41,9 +45,8 @@ extern "C" {
         DCPU::Core* core = new DCPU::Core();
         vm* result = (vm*) malloc(sizeof(vm));
 
+        result = (vm*) core;
         result->core = static_cast<void*>(core);
-        result->registers = &(core->registers[0]);
-        result->memory = &(core->memory[0]);
 
         return result;
     }
@@ -54,12 +57,9 @@ extern "C" {
         core->Cycle();
     }
 
-    void vm_flash(vm* l_vm, uint16_t* words)
+    void vm_flash(vm* l_vm, uint16_t words[0x10000])
     {
        GET_CORE(l_vm); 
-       std::vector<uint16_t> memory(0x10000);
-       memory.assign(words, words + 0x10000);
-
-       core->Flash(memory);
+       core->Flash(words);
     }
 }
