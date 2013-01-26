@@ -5,7 +5,7 @@ option(DCPU_LIBS "Build the Toolchain libraries" ON)
 option(SHARED_LIBS "Build shared libraries" OFF)
 
 if(${DCPU_LIBS})
-    add_subdirectory(libs)
+    add_subdirectory(src/libs)
 endif()
 
 if(${SHARED_LIBS})
