@@ -31,4 +31,14 @@ namespace DCPU {
     }
 }
 
+extern "C" {
+    #include "dcpu.h"
+    vm* vm_create() {
+        DCPU::Core* core = new DCPU::Core();
+        vm* result = (vm*) malloc(sizeof(vm));
 
+        result->core = static_cast<void*>(core);
+        result->registers = &(core->registers[0]);
+        return result;
+    }
+}

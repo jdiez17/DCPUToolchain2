@@ -1,3 +1,6 @@
+#ifndef DCPU_HPP
+#define DCPU_HPP
+
 #include <vector>
 #include <stdint.h>
 
@@ -19,3 +22,6 @@ namespace DCPU
         uint16_t ia; 
     };
 }
+
+
+#endif
