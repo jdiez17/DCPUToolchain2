@@ -10,5 +10,8 @@ typedef struct {
 } vm;
 
 vm* vm_create();
+void vm_cycle(vm* l_vm);
+void vm_flash(vm* l_vm, uint16_t* words);
 
-#endif DCPU_H
+
+#endif
