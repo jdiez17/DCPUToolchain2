@@ -38,7 +38,7 @@ namespace DCPU {
 
 extern "C" {
     #include "dcpu.h"
-    #define GET_CORE(vm) DCPU::Core* core = static_cast<DCPU::Core*>(vm->core);
+    #define GET_CORE(vm) DCPU::Core* core = reinterpret_cast<DCPU::Core*>(vm);
 
     vm* vm_create()
     {
@@ -46,8 +46,6 @@ extern "C" {
         vm* result = (vm*) malloc(sizeof(vm));
 
         result = (vm*) core;
-        result->core = static_cast<void*>(core);
-
         return result;
     }
 

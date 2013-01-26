@@ -20,7 +20,6 @@ namespace DCPU
         void Flash(uint16_t words[0x10000]);
         void Reset(bool reset_memory);
         void Cycle();
-
     };
 }
 

@@ -18,5 +18,7 @@ int main(int argc, char** argv)
     assert(core->memory[0x5000] == 0xbeef);
     assert(core->memory[0xffff] == 0xface);
 
+    vm_cycle(core);
+
     return 0;
 }

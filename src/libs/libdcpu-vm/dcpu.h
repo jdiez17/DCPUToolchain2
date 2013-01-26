@@ -10,8 +10,6 @@ typedef struct {
     uint16_t sp;
     uint16_t ex;
     uint16_t ia; 
-
-    void* core;
 } vm;
 
 vm* vm_create();
