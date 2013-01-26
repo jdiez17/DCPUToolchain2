@@ -5,11 +5,11 @@
 
 typedef struct {
     uint16_t registers[8];
-    uint16_t memory[0x10000];
     uint16_t pc;
     uint16_t sp;
     uint16_t ex;
     uint16_t ia; 
+    uint16_t memory[0x10000];
 } vm;
 
 vm* vm_create();
