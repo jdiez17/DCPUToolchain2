@@ -42,11 +42,7 @@ extern "C" {
 
     vm* vm_create()
     {
-        DCPU::Core* core = new DCPU::Core();
-        vm* result = (vm*) malloc(sizeof(vm));
-
-        result = (vm*) core;
-        return result;
+        return (vm*) new DCPU::Core();
     }
 
     void vm_cycle(vm* l_vm)
